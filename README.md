@@ -7,3 +7,4 @@ To check aie pollution please enter your localisation or put arguments as:
     -longitude=... -latitude=... 
     -id=...  to get data from the specific sensor
     to show data by the hour add -h option
+
