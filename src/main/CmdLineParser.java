@@ -25,10 +25,14 @@ public class CmdLineParser {
             }
             for(String arg: args){
                 if(arg.contains("-longitude=")){
+                    if(arg.length()==11)
+                        throw new IOException();
                     longitude= Double.parseDouble(arg.substring(11));
                     isLng = true;
                 }
                 if(arg.contains("-latitude=")){
+                    if(arg.length()==10)
+                        throw new IOException();
                     latitude= Double.parseDouble(arg.substring(10));
                     isLat = true;
                 }
@@ -36,8 +40,11 @@ public class CmdLineParser {
                     last24H = true;
                 }
                 if(arg.contains("-id=")){
+                    if(arg.length()==4)
+                        throw new IOException();
                     id = Integer.parseInt(arg.substring(4));
-                    if(id<0) throw new IOException();
+                    if(id<0)
+                        throw new IOException();
                     singleSensor = true;
 
                 }
@@ -62,6 +69,9 @@ public class CmdLineParser {
             }
         }
         catch (IOException ex){
+            throw new IOException("wrong arguments");
+        }
+        catch (NumberFormatException ex){
             throw new IOException("wrong arguments");
         }
     }
